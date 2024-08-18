@@ -1,0 +1,28 @@
+:root{
+    --mbile-width: 320px;
+    --tablet-width: 768px;
+    --desktop-width: 1440px;
+    --font-family: "Red Hat Display";
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--font-family);
+}
+
+header{
+    
+}
+
+main{
+
+}
+
+footer{
+
+}
