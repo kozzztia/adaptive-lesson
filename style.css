@@ -1,34 +1,73 @@
-:root{
+:root {
     --mbile-width: 320px;
     --tablet-width: 768px;
     --desktop-width: 1440px;
     --font-family: "Red Hat Display";
+
+    --tablet-mobile-header-height: 60px;
+    --desktop-header-height: 100px;
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: var(--font-family);
+    background: #fff;
 }
 
-header{
-width :100%;
+button {
+    border: none;
+    outline: none;
+    background: inherit;
+    cursor: pointer;
 }
 
-main{
-
+header,
+main,
+footer {
+    width: 100%;
+    margin: 0 auto;
+    max-width: var(--desktop-width);
+    padding: 10px;
 }
 
-footer{
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    height: var(--tablet-mobile-height);
+
+    ul {
+        display: none;
+    }
+
+    .search {
+        margin-left: auto;
+
+        svg {
+            fill: black;
+        }
+    }
+
+    .burger {
+        svg {
+            stroke: black;
+        }
+    }
+    /* .search:hover, .burger:hover{
+        svg{
+            fill : red;
+            stroke :red;
+        }
+    } */
+
+main {
 }
-/* git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin git@github.com:kozzztia/adaptive-lesson.git
-git push -u origin main */
+
+footer {}
