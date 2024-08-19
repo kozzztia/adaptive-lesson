@@ -1,11 +1,12 @@
 :root {
-    --mbile-width: 320px;
+    --mobile-width: 320px;
     --tablet-width: 768px;
     --desktop-width: 1440px;
     --font-family: "Red Hat Display";
 
     --tablet-mobile-header-height: 60px;
-    --desktop-header-height: 100px;
+
+    --position-top: calc(var(--tablet-mobile-header-height) * -1);
 }
 
 * {
@@ -17,14 +18,9 @@
 body {
     font-family: var(--font-family);
     background: #fff;
+    position: relative;
 }
 
-button {
-    border: none;
-    outline: none;
-    background: inherit;
-    cursor: pointer;
-}
 
 header,
 main,
@@ -34,38 +30,57 @@ footer {
     max-width: var(--desktop-width);
     padding: 10px;
 }
-
+svg{
+    stroke: #000;
+}
 
 header {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    height: var(--tablet-mobile-height);
+    height: var(--tablet-mobile-header-height);
+    background: green;
+    position: relative;
+    z-index: auto;
 
-    ul {
+    img{
+        background: var(--var);
+    }
+    input{
         display: none;
     }
-
-    .search {
-        margin-left: auto;
-
-        svg {
-            fill: black;
-        }
+    label{
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .burger {
-        svg {
-            stroke: black;
-        }
+    ul{
+        position: absolute;
+        list-style: none;
+        right: 0;
+        top: var(--position-top);
+        transition: all .5s ease;
+        background: #ddd;
+        z-index: -1;
     }
-    /* .search:hover, .burger:hover{
-        svg{
-            fill : red;
-            stroke :red;
-        }
-    } */
+    a{
+        padding: 10px;
+    }
+
+    input:checked ~ ul{
+        --position-top: var(--tablet-mobile-header-height);
+    }
+
+}
+
 
 main {
 }
