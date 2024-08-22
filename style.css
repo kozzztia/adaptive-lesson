@@ -5,20 +5,34 @@
     --font-family: "Red Hat Display";
 
     --tablet-mobile-header-height: 60px;
+    --table-mobile-footer-height: 420px;
 
     --position-top: calc(var(--tablet-mobile-header-height) * -1);
+    --transition: all .2s ease;
+    --main-padding: 23px 10px;
+
+    &:has(#toggle-menu:checked){
+        --position-top: var(--tablet-mobile-header-height)
+    };
 }
 
+
+
+/* :root:has() */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+a, h1, h2, h3, h4{
+    user-select: none;
+}
+
 
 body {
     font-family: var(--font-family);
     background: #fff;
-    position: relative;
+    color : #565656;
 }
 
 
@@ -28,10 +42,7 @@ footer {
     width: 100%;
     margin: 0 auto;
     max-width: var(--desktop-width);
-    padding: 10px;
-}
-svg{
-    stroke: #000;
+    padding: var(--main-padding);
 }
 
 header {
@@ -44,45 +55,147 @@ header {
     align-items: center;
     gap: 20px;
     height: var(--tablet-mobile-header-height);
-    background: green;
-    position: relative;
-    z-index: auto;
+    background: #fff;
+    z-index: 100;
 
-    img{
+    img {
         background: var(--var);
     }
-    input{
+
+    input[type="checkbox"] {
         display: none;
     }
-    label{
+
+    label {
         cursor: pointer;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        gap: 10px;
     }
 
-    ul{
-        position: absolute;
-        list-style: none;
-        right: 0;
-        top: var(--position-top);
-        transition: all .5s ease;
-        background: #ddd;
-        z-index: -1;
-    }
-    a{
-        padding: 10px;
+    /* search menu */
+    label[for="search-menu"] {
+        margin-left: auto;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 30px;
+            /* border: none; */
+            outline: none;
+            transition: var(--transition);
+        }
     }
 
-    input:checked ~ ul{
-        --position-top: var(--tablet-mobile-header-height);
+    input[id="search-menu"]:checked~label[for="search-menu"] {
+        input {
+            opacity: 1;
+            width: 200px;
+            padding-left: 10px;
+        }
     }
-
 }
 
+/* burger */
+ul {
+    padding: 5px;
+    opacity: 0;
+    position: absolute;
+    height: auto;
+    list-style: none;
+    right: 0;
+    top: var(--position-top);
+    transition: var(--transition);
+    z-index: -1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap :5px;
+    overflow: hidden;
+}
+
+a {
+    padding : 5px;
+    font-size: 18px;
+    color : inherit;
+    background: transparent;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+    overflow: hidden;
+    display: block;
+    &:after{
+        content: "";
+        display: block;
+        position: absolute;
+        right: -100px;
+        border: 0;
+        width: 100%;
+        height: 1px;
+        background: #000;
+        transition: var(--transition);
+    }
+
+    &:hover{
+        color: #000;
+        &:after{
+            right: 0;
+        }
+    }
+}
+
+input[id="toggle-menu"]:checked~ul {
+    opacity: 1;
+}
 
 main {
+    position: relative;
+    height: 100vh;
+    z-index: auto;
+    top: var(--tablet-mobile-header-height);
 }
 
-footer {}
+footer {
+    position: relative;
+    height: var(--table-mobile-footer-height);
+    z-index: auto;
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+    :root {
+        --main-padding: 20px 34px;
+    }
+    header>ul{
+        right: 20px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    :root {
+        --main-padding: 40px 135px;
+        --tablet-mobile-header-height: 100px;
+    }
+
+    label[for="toggle-menu"] {
+        display: none;
+    }
+
+    header>ul{
+        opacity: 1;
+        position: relative;
+        height: auto;
+        margin-left: 30%;
+        right: 0;
+        top: 0;
+        transition: var(--transition);
+        z-index: auto;
+        flex-direction: row;
+    }
+}
