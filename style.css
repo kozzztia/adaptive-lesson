@@ -11,14 +11,15 @@
     --transition: all .2s ease;
     --main-padding: 23px 10px;
     --post-icon-content: "View All";
+    --post-display: none;
 
     &:has(#toggle-menu:checked) {
         --position-top: var(--tablet-mobile-header-height)
     }
     &:has(#show-posts-toggle:checked){
         --post-icon-content: "Hide";
+        --post-display: flex;
     }
-
     ;
 }
 
@@ -35,7 +36,9 @@ a,
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
     user-select: none;
 }
 
@@ -300,15 +303,18 @@ main {
                 font-weight: 400;
                 line-height: 26.56px;
                 letter-spacing: 0.1em;
-                text-align: left;
+                text-align: center;
                 margin-right: 20px;
+                width: 70px;
             }
 
         }
-
         div {
             display: flex;
             flex-direction: column-reverse;
+            &:nth-child(n+5){
+                display: var(--post-display);
+            }
 
             span {
                 display: flex;
