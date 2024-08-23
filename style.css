@@ -20,12 +20,12 @@
     }
 
     &:has(#show-posts-toggle:checked) {
-        --post-icon-content: "Hide Some";
+        --post-icon-content: "Hide";
         --post-display: flex;
     }
 
     &:has(#show-popular-toggle:checked) {
-        --popular-icon-content: "Hide Some";
+        --popular-icon-content: "Hide";
         --popular-display: flex;
     }
 
