@@ -331,6 +331,7 @@ main {
             line-height: 26.56px;
             letter-spacing: 0.1em;
             text-align: left;
+            white-space: no-wrap;
 
         }
     }
@@ -427,6 +428,7 @@ main {
             line-height: 26.56px;
             letter-spacing: 0.1em;
             text-align: left;
+            white-space: no-wrap;
 
         }
     }
